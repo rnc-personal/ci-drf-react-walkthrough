@@ -11,7 +11,7 @@ class Profile(models.Model):
     content = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/',
-        default='../mama-comment-scaled.c68deb8d161b.png'
+        default='../img/baking-mama-footer.f58025d9dfa6.png'
     )
 
     class Meta:
