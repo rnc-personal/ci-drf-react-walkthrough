@@ -1,10 +1,10 @@
 from django.http import Http404
-from rest_framework import status
+from rest_framework import status, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Profile
 from .serializers import ProfileSerializer
-from drf_api.permissions import isOwnerOrReadOnly
+from drf_api.permissions import IsOwnerOrReadOnly
 
 """
 In the given Django view class, the `context` variable is being used when initializing the `ProfileSerializer` object.
@@ -32,7 +32,7 @@ class ProfileList(APIView):
 class ProfileDetail(APIView):
     # This is a reserved variable that will show a form in the JSON response for editing a profile
     serializer_class = ProfileSerializer
-    permission_classes = [isOwnerOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnly]
     def get_object(self, pk):
         try:
             profile = Profile.objects.get(pk=pk)
