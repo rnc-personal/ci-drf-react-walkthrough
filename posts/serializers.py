@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from .models import Post
-
+from posts.models import Post
 
 class PostSerializer(serializers.ModelSerializer):
 
@@ -10,7 +9,7 @@ class PostSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
 
     def validate_image(self, value):
-        if value.size > 1024 * 1024 * 2
+        if value.size > 1024 * 1024 * 2:
             raise serializers.ValidationError('Image must be less than 2MB')
 
         if value.image.width > 4096:
@@ -35,7 +34,6 @@ class PostSerializer(serializers.ModelSerializer):
             'profile_image',            
             'created_at',
             'updated_at',
-            'name',
             'content',
             'image',
             'image_filter',
