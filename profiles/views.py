@@ -6,6 +6,23 @@ from .models import Profile
 from .serializers import ProfileSerializer
 from drf_api.permissions import isOwnerOrReadOnly
 
+"""
+In the given Django view class, the `context` variable is being used when initializing the `ProfileSerializer` object.
+The `context` argument allows you to pass additional context information to the serializer.
+
+In this case, the `context` dictionary is being used to provide the `request` object to the serializer.
+The `request` object represents the current HTTP request being handled by the view.
+By passing the `request` object in the `context`, the serializer gains access to information about the request,
+such as the user making the request or any additional metadata.
+
+The `ProfileSerializer` might use this `request` object in various ways.
+For example, it can access the user making the request to apply certain permissions or to customize the serialization process based on the authenticated user.
+In summary, the `context` argument in the `ProfileSerializer` initialization allows you to pass additional context information,
+such as the `request` object, to the serializer. This can be useful for performing various operations or customizations
+based on the request data within the serializer.
+"""
+
+
 class ProfileList(APIView):
     def get(self, request):
         profiles = Profile.objects.all()
