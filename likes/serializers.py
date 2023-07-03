@@ -1,8 +1,8 @@
-form django.db import IntegrityError
+from django.db import IntegrityError
 from rest_framework import serializers
-from .models import Like
+from likes.models import Like
 
-class ProfileSerializer(serializers.ModelSerializer):
+class LikeSerializer(serializers.ModelSerializer):
 
     owner = serializers.ReadOnlyField(source='owner.username')
     
