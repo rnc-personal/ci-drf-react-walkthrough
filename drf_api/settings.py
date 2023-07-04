@@ -65,7 +65,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = 'DEV' in os.environ
 
 
-ALLOWED_HOSTS = ['localhost', '.gitpod.io', 'ci-full-stack-walkthrough.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '.gitpod.io', 'ci-full-stack-walkthrough-9fcaa4b5b32d.herokuapp.com']
 
 # Application definition
 
