@@ -1,4 +1,4 @@
-from rest_framework imCommentsFollower      port generics, permissions
+from rest_framework import generics, permissions
 from drf_api.permissions import IsOwnerOrReadOnly
 from .models import Follower
 from .serializers import FollowerSerializer
