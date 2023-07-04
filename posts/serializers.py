@@ -9,6 +9,7 @@ class PostSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     like_id = serializers.SerializerMethodField()
+    likes_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
@@ -27,7 +28,7 @@ class PostSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
 
     def get_like_id(self, obj):
-        request = self.context['request']
+        user = self.context['request'].user
         if user.is_authenticated:
             like = Like.objects.filter(owner=user, post=obj).first()
             return like.id if like else None
@@ -47,5 +48,6 @@ class PostSerializer(serializers.ModelSerializer):
             'content',
             'image',
             'image_filter',
-            'like_id'
+            'like_id',
+            'likes_count',
         ]
